@@ -88,8 +88,10 @@ namespace ConsoleEmpHoursCalculator
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Enter a valid input");
                         Console.ResetColor();
+
                         GetInfo();
                         Console.Clear();
+
                         break;
                 }
 

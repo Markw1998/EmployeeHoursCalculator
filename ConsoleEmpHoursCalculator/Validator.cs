@@ -8,6 +8,7 @@ namespace ConsoleEmpHoursCalculator
 {
     public class Validator
     {
+        //Validation Class, Used to return a key value pair for validating the hours worked input
         public static KeyValuePair<bool, int> ValidateHoursWorked(string hrsWorked)
         {
 
