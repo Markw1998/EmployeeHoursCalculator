@@ -13,7 +13,6 @@ namespace ConsoleEmpHoursCalculator
 
         }
 
-
         public override int CalculateBreaks(int hoursWorked)
         {
             int breakTime = hoursWorked * 15;

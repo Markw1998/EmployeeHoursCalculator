@@ -10,76 +10,92 @@ namespace ConsoleEmpHoursCalculator
     {
         //Instantiating a List of type Employee to track employees
         static List<Employee> EmployeesList = new List<Employee>();
+
         static void Main(string[] args)
         {
             //Begin the Application by getting the information
             GetInfo();
         }
 
-
         //Get Employee's information and store it
         private static void GetInfo()
         {
-            Console.Clear();
 
             Console.WriteLine("Please enter employee name:");
-            string EmpName = Console.ReadLine();
+            string empName = Console.ReadLine();
 
             Console.WriteLine("\nHow many hours is this employee working?");
-            int EmpHours = Convert.ToInt32(Console.ReadLine());
+            string empHours = Console.ReadLine();
+            KeyValuePair<bool, int> empHoursValidated = Validator.ValidateHoursWorked(empHours);
 
-            Console.WriteLine("\nPlease specify your shift:");
-            Console.WriteLine("1. Day Shift");
-            Console.WriteLine("2. Night Shift");
-            Console.WriteLine("3. Split Shift");
-
-            Console.WriteLine("Enter here: ");
-            int EmpShiftType = Convert.ToInt32(Console.ReadLine());
-
-
-            switch (EmpShiftType)
+            while (!empHoursValidated.Key)
             {
-                case 1:
-                    Employee dayEmp = new Employee(EmpName, EmpHours);
+               Console.WriteLine("\nHow many hours is this employee working?");
+               empHours = Console.ReadLine();
+               empHoursValidated = Validator.ValidateHoursWorked(empHours);
 
-                    dayEmp.CalculateBreaks(EmpHours);
-
-                    //Adding the employee to the list.
-                    EmployeesList.Add(dayEmp);
-
-
-                    break;
-                case 2:
-                    Employee nightEmp = new NightShiftEmployee(EmpName, EmpHours);
-
-                    nightEmp.CalculateBreaks(EmpHours);
-
-                    //Adding the employee to the list.
-                    EmployeesList.Add(nightEmp);
-
-
-                    break;
-
-                case 3:
-
-                    Employee splitEmp = new SplitShiftEmployee(EmpName, EmpHours);
-
-                    splitEmp.CalculateBreaks(EmpHours);
-
-                    //Adding the employee to the list.
-                    EmployeesList.Add(splitEmp);
-
-                    break;
-
-                default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Enter a valid input");
-                    Console.ResetColor();
-                    break;
             }
 
-            //Calling ContinueOption function to check if user wants to continue
-            ContinueOption();
+            Console.Clear();
+
+            Console.WriteLine("Please specify your shift:");
+            Console.WriteLine("1. Day Shift");
+            Console.WriteLine("2. Night Shift");
+            Console.WriteLine("3. Split Shift\n");
+
+            Console.Write("Enter here: ");
+            int EmpShiftType = Convert.ToInt32(Console.ReadLine());
+
+            Console.Clear();
+
+            {
+
+                switch (EmpShiftType)
+                {
+                    case 1:
+                        Employee dayEmp = new Employee(empName, empHoursValidated.Value);
+
+                        dayEmp.CalculateBreaks(empHoursValidated.Value);
+
+                        //Adding the employee to the list.
+                        EmployeesList.Add(dayEmp);
+
+
+                        break;
+                    case 2:
+                        Employee nightEmp = new NightShiftEmployee(empName, empHoursValidated.Value);
+
+                        nightEmp.CalculateBreaks(empHoursValidated.Value);
+
+                        //Adding the employee to the list.
+                        EmployeesList.Add(nightEmp);
+
+
+                        break;
+
+                    case 3:
+
+                        Employee splitEmp = new SplitShiftEmployee(empName, empHoursValidated.Value);
+
+                        splitEmp.CalculateBreaks(empHoursValidated.Value);
+
+                        //Adding the employee to the list.
+                        EmployeesList.Add(splitEmp);
+
+                        break;
+
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Enter a valid input");
+                        Console.ResetColor();
+                        GetInfo();
+                        Console.Clear();
+                        break;
+                }
+
+                //Calling ContinueOption function to check if user wants to continue
+                ContinueOption();
+            }
 
         }
 
