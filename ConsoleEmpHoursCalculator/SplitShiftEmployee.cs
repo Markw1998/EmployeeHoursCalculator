@@ -17,8 +17,8 @@ namespace ConsoleEmpHoursCalculator
         {
             int breakTime = hoursWorked * 10;
 
-            //// Calculating the employees additional minutes by dividing the hours by 4 and adding 20 minutes to their break time.
-            //// (20 mins extra break for every 4 hours)
+            //// Calculating the employees additional minutes by dividing the hours by 3 and adding 20 minutes to their break time.
+            //// (20 mins extra break for every 3 hours)
             int numberOf = (hoursWorked * 60) / 180;
 
             int additionalMinutes = numberOf * 20;
