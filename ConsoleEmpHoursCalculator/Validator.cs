@@ -18,6 +18,7 @@ namespace ConsoleEmpHoursCalculator
             {
                 return new KeyValuePair<bool, int>(success, hoursWorked);
             }
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Enter a valid input");
             Console.ResetColor();

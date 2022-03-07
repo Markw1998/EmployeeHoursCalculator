@@ -110,6 +110,7 @@ namespace ConsoleEmpHoursCalculator
             //If Y then go back to GetInfo function and create another employee, else if N - Call the DsiplayEmployees function, else invalid input.
             if (userInput == "Y")
             {
+                Console.Clear();
                 GetInfo();
             }
             else if (userInput == "N")
