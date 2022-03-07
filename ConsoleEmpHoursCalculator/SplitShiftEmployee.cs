@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleEmpHoursCalculator
 {
+    //Split Shift Employee Class
     class SplitShiftEmployee : Employee
     {
         public SplitShiftEmployee(string _employeeName, int _empHours) : base(_employeeName, _empHours)
         {
         }
-
+        //Calculates Breaks Based of Split Shift
         public override int CalculateBreaks(int hoursWorked)
         {
             int breakTime = hoursWorked * 10;

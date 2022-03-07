@@ -22,8 +22,7 @@ namespace ConsoleEmpHoursCalculator
 
         }
 
-        //// Calculating the employees additional minutes by dividing the hours by 4 and adding 20 minutes to their break time.
-        //// (20 mins extra break for every 4 hours)
+        //Calculates Breaks Based of Day/Normal Shift
         public virtual int CalculateBreaks(int hoursWorked)
         {
             int breakTime = hoursWorked * 10;
